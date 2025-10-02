@@ -1,16 +1,18 @@
 "use client";
 
+import { useState } from "react";
+import {useTranslations} from 'next-intl';
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Copy, Clock } from "lucide-react";
-import { useState } from "react";
 
 interface ScriptCardProps {
   script: string;
 }
 
 export function ScriptCard({ script }: ScriptCardProps) {
+  const t = useTranslations('ScriptCard');
   const [copied, setCopied] = useState(false);
 
   const handleCopy = () => {
@@ -27,13 +29,13 @@ export function ScriptCard({ script }: ScriptCardProps) {
     <Card>
       <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
         <div className="flex items-center gap-2">
-          <CardTitle className="text-sm font-medium">Script</CardTitle>
+          <CardTitle className="text-sm font-medium">{t('title')}</CardTitle>
           <Badge variant="secondary" className="text-xs">
-            <Clock className="h-3 w-3 mr-1" />~{readTime}s
+            <Clock className="h-3 w-3 mr-1" />{t('duration', { seconds: readTime })}
           </Badge>
         </div>
         <Button size="sm" variant="ghost" onClick={handleCopy}>
-          {copied ? "Copied!" : <Copy className="h-4 w-4" />}
+          {copied ? t('copied') : <Copy className="h-4 w-4" />}
         </Button>
       </CardHeader>
       <CardContent>
@@ -41,7 +43,7 @@ export function ScriptCard({ script }: ScriptCardProps) {
           {script}
         </div>
         <p className="text-xs text-muted-foreground mt-4">
-          Read at a natural pace with energy and emotion
+          {t('description')}
         </p>
       </CardContent>
     </Card>

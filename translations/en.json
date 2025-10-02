@@ -1,0 +1,133 @@
+{
+  "GeneratePage": {
+    "title": "Create Viral Content",
+    "description": "Generate compelling hooks and scripts for Instagram Reels and short-form videos"
+  },
+  "ContentGenerator": {
+    "topicLabel": "What's your content about?",
+    "placeholders": {
+      "1": "How to grow your Instagram following",
+      "2": "5 productivity hacks that actually work",
+      "3": "The secret to perfect coffee at home",
+      "4": "Why morning routines are overrated",
+      "5": "Simple recipe for meal prep",
+      "6": "Tech gadgets under $50 worth buying"
+    },
+    "useTopCreatorHooks": "Use hooks from top creators",
+    "generateButton": "Generate Content",
+    "generating": "Generating...",
+    "newContent": "New Content",
+    "regenerate": "Regenerate",
+    "regenerating": "Regenerating..."
+  },
+  "Sidebar": {
+    "appName": "VIRALLY",
+    "generate": "Generate",
+    "strategy": "Strategy"
+  },
+  "LanguageSwitcher": {
+    "label": "Language",
+    "english": "English",
+    "russian": "Russian"
+  },
+  "StrategyPage": {
+    "title": "Create Your Content Strategy",
+    "description": "Answer a few questions to get personalized content recommendations",
+    "stepOf": "Step {current} of {total}",
+    "percentComplete": "{percent}% Complete",
+    "back": "Back",
+    "next": "Next",
+    "generateStrategy": "Generate Strategy",
+    "generating": "Generating...",
+    "backToStrategy": "Back to Strategy"
+  },
+  "WelcomeStep": {
+    "title": "Create Your Viral Content Strategy",
+    "description": "Answer 2 simple questions and get a personalized content strategy in seconds",
+    "intro": "Our AI will analyze your profile and generate a complete strategy tailored to your niche and audience.",
+    "whatYouGet": "What You'll Get",
+    "hooks": {
+      "title": "5 Viral Hook Templates",
+      "description": "Attention-grabbing openings proven to stop the scroll"
+    },
+    "contentIdeas": {
+      "title": "5 Content Ideas",
+      "description": "Topics perfectly aligned with your content pillars"
+    },
+    "bestPractices": {
+      "title": "3 Best Practices",
+      "description": "Personalized tips specific to your niche and audience"
+    },
+    "badges": {
+      "quickSteps": "2 Quick Steps",
+      "time": "Takes 30 seconds",
+      "free": "100% Free"
+    },
+    "begin": "Begin Strategy Creation"
+  },
+  "ContentTypeStep": {
+    "title": "Content Type & Niche",
+    "description": "Let's define your content focus and target audience",
+    "contentTypeLabel": "What type of content do you want to create?",
+    "contentTypes": {
+      "educational": "Educational - Teach something valuable",
+      "entertaining": "Entertaining - Make people laugh or smile",
+      "inspirational": "Inspirational - Motivate and inspire",
+      "promotional": "Promotional - Showcase products/services"
+    },
+    "nicheLabel": "What's your niche?",
+    "nichePlaceholder": "e.g., Fitness, Tech, Cooking, Fashion, Business...",
+    "audienceLabel": "Who is your target audience?",
+    "audiencePlaceholder": "e.g., Young professionals, Students, Parents, Entrepreneurs..."
+  },
+  "StyleStep": {
+    "title": "Style Preferences",
+    "description": "Define your content style and approach",
+    "toneLabel": "What tone do you prefer?",
+    "tones": {
+      "casual": "Casual - Friendly and conversational",
+      "professional": "Professional - Authoritative and polished",
+      "humorous": "Humorous - Light-hearted and fun",
+      "serious": "Serious - Direct and informative"
+    },
+    "hookStyleLabel": "What hook style works best for you?",
+    "hookStyles": {
+      "question": "Question - \"Did you know...?\"",
+      "statement": "Statement - \"Here's why...\"",
+      "story": "Story - \"Last week I...\"",
+      "statistic": "Statistic - \"90% of people...\""
+    },
+    "contentPillarsLabel": "Content Pillars (up to 3)",
+    "contentPillarsPlaceholder": "e.g., Tips & Tricks, Behind the scenes...",
+    "add": "Add",
+    "noPillars": "No content pillars added yet"
+  },
+  "StrategyResult": {
+    "title": "Your Content Strategy",
+    "regenerate": "Regenerate",
+    "hooks": {
+      "title": "Example Hooks",
+      "description": "Use these hooks to grab attention instantly"
+    },
+    "contentIdeas": {
+      "title": "Content Ideas",
+      "description": "Topics aligned with your content pillars"
+    },
+    "bestPractices": {
+      "title": "Best Practices",
+      "description": "Tips specific to your niche and audience"
+    },
+    "copied": "Copied!"
+  },
+  "HookCard": {
+    "title": "Hook",
+    "copied": "Copied!",
+    "description": "Use this as your opening line to grab attention"
+  },
+  "ScriptCard": {
+    "title": "Script",
+    "copied": "Copied!",
+    "duration": "~{seconds}s",
+    "description": "Read at a natural pace with energy and emotion"
+  }
+}

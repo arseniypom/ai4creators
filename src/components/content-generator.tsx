@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import {useTranslations} from 'next-intl';
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
@@ -12,26 +13,26 @@ import { ScriptCard } from "@/components/script-card";
 import { Skeleton } from "@/components/ui/skeleton";
 import { useContentGenerator } from "@/hooks/use-content-generator";
 
-const placeholders = [
-  "How to grow your Instagram following",
-  "5 productivity hacks that actually work",
-  "The secret to perfect coffee at home",
-  "Why morning routines are overrated",
-  "Simple recipe for meal prep",
-  "Tech gadgets under $50 worth buying",
-];
-
 export function ContentGenerator() {
+  const t = useTranslations('ContentGenerator');
   const [topic, setTopic] = useState("");
   const [useTopCreatorHooks, setUseTopCreatorHooks] = useState(false);
-  const [placeholder, setPlaceholder] = useState(placeholders[0]);
+  const [placeholder, setPlaceholder] = useState("");
 
   // Set random placeholder after hydration to avoid mismatch
   useEffect(() => {
+    const placeholders = [
+      t('placeholders.1'),
+      t('placeholders.2'),
+      t('placeholders.3'),
+      t('placeholders.4'),
+      t('placeholders.5'),
+      t('placeholders.6'),
+    ];
     setPlaceholder(
       placeholders[Math.floor(Math.random() * placeholders.length)],
     );
-  }, []);
+  }, [t]);
 
   const { content, isLoading, error, generateContent, resetContent } =
     useContentGenerator();
@@ -55,7 +56,7 @@ export function ContentGenerator() {
       <Card>
         <CardContent className="space-y-4">
           <div className="space-y-2">
-            <Label htmlFor="topic">What&apos;s your content about?</Label>
+            <Label htmlFor="topic">{t('topicLabel')}</Label>
             <Textarea
               id="topic"
               placeholder={placeholder}
@@ -75,7 +76,7 @@ export function ContentGenerator() {
                 disabled={isLoading}
               />
               <Label htmlFor="top-creators" className="cursor-pointer">
-                Use hooks from top creators
+                {t('useTopCreatorHooks')}
               </Label>
             </div>
           </div>
@@ -92,12 +93,12 @@ export function ContentGenerator() {
                 {isLoading ? (
                   <>
                     <RefreshCw className="h-4 w-4 mr-2 animate-spin" />
-                    Generating...
+                    {t('generating')}
                   </>
                 ) : (
                   <>
                     <Sparkles className="h-4 w-4 mr-2" />
-                    Generate Content
+                    {t('generateButton')}
                   </>
                 )}
               </Button>
@@ -109,7 +110,7 @@ export function ContentGenerator() {
                   className="flex-1"
                 >
                   <RefreshCw className="h-4 w-4 mr-2" />
-                  New Content
+                  {t('newContent')}
                 </Button>
                 <Button
                   onClick={handleGenerate}
@@ -119,12 +120,12 @@ export function ContentGenerator() {
                   {isLoading ? (
                     <>
                       <RefreshCw className="h-4 w-4 mr-2 animate-spin" />
-                      Regenerating...
+                      {t('regenerating')}
                     </>
                   ) : (
                     <>
                       <Sparkles className="h-4 w-4 mr-2" />
-                      Regenerate
+                      {t('regenerate')}
                     </>
                   )}
                 </Button>

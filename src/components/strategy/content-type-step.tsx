@@ -1,5 +1,6 @@
 "use client";
 
+import {useTranslations} from 'next-intl';
 import {
   Card,
   CardContent,
@@ -21,17 +22,19 @@ interface ContentTypeStepProps {
 }
 
 export function ContentTypeStep({ data, onChange }: ContentTypeStepProps) {
+  const t = useTranslations('ContentTypeStep');
+
   return (
     <Card>
       <CardHeader>
-        <CardTitle>Content Type & Niche</CardTitle>
+        <CardTitle>{t('title')}</CardTitle>
         <CardDescription>
-          Let&apos;s define your content focus and target audience
+          {t('description')}
         </CardDescription>
       </CardHeader>
       <CardContent className="space-y-6">
         <div className="space-y-3">
-          <Label>What type of content do you want to create?</Label>
+          <Label>{t('contentTypeLabel')}</Label>
           <RadioGroup
             value={data.contentType}
             onValueChange={(value) => onChange("contentType", value)}
@@ -39,45 +42,45 @@ export function ContentTypeStep({ data, onChange }: ContentTypeStepProps) {
             <div className="flex items-center space-x-2">
               <RadioGroupItem value="educational" id="educational" />
               <Label htmlFor="educational">
-                Educational - Teach something valuable
+                {t('contentTypes.educational')}
               </Label>
             </div>
             <div className="flex items-center space-x-2">
               <RadioGroupItem value="entertaining" id="entertaining" />
               <Label htmlFor="entertaining">
-                Entertaining - Make people laugh or smile
+                {t('contentTypes.entertaining')}
               </Label>
             </div>
             <div className="flex items-center space-x-2">
               <RadioGroupItem value="inspirational" id="inspirational" />
               <Label htmlFor="inspirational">
-                Inspirational - Motivate and inspire
+                {t('contentTypes.inspirational')}
               </Label>
             </div>
             <div className="flex items-center space-x-2">
               <RadioGroupItem value="promotional" id="promotional" />
               <Label htmlFor="promotional">
-                Promotional - Showcase products/services
+                {t('contentTypes.promotional')}
               </Label>
             </div>
           </RadioGroup>
         </div>
 
         <div className="space-y-2">
-          <Label htmlFor="niche">What&apos;s your niche?</Label>
+          <Label htmlFor="niche">{t('nicheLabel')}</Label>
           <Input
             id="niche"
-            placeholder="e.g., Fitness, Tech, Cooking, Fashion, Business..."
+            placeholder={t('nichePlaceholder')}
             value={data.niche}
             onChange={(e) => onChange("niche", e.target.value)}
           />
         </div>
 
         <div className="space-y-2">
-          <Label htmlFor="audience">Who is your target audience?</Label>
+          <Label htmlFor="audience">{t('audienceLabel')}</Label>
           <Input
             id="audience"
-            placeholder="e.g., Young professionals, Students, Parents, Entrepreneurs..."
+            placeholder={t('audiencePlaceholder')}
             value={data.targetAudience}
             onChange={(e) => onChange("targetAudience", e.target.value)}
           />

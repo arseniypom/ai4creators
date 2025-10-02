@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import {useTranslations} from 'next-intl';
 import { Progress } from "@/components/ui/progress";
 import { Button } from "@/components/ui/button";
 import { ArrowLeft, ArrowRight } from "lucide-react";
@@ -22,6 +23,7 @@ type ProfileType = {
 };
 
 export default function StrategyPage() {
+  const t = useTranslations('StrategyPage');
   const [currentStep, setCurrentStep] = useState(0);
   const [showResult, setShowResult] = useState(false);
   const [profile, setProfile] = useState<ProfileType>({
@@ -102,7 +104,7 @@ export default function StrategyPage() {
       <div className="max-w-4xl mx-auto">
         <Button onClick={handleBack} variant="ghost" className="mb-4">
           <ArrowLeft className="h-4 w-4 mr-2" />
-          Back to Strategy
+          {t('backToStrategy')}
         </Button>
         <StrategyResult
           strategy={generateStrategy.data}
@@ -125,18 +127,18 @@ export default function StrategyPage() {
   return (
     <div className="max-w-2xl mx-auto space-y-6">
       <div className="space-y-2">
-        <h1 className="text-3xl font-bold">Create Your Content Strategy</h1>
+        <h1 className="text-3xl font-bold">{t('title')}</h1>
         <p className="text-muted-foreground">
-          Answer a few questions to get personalized content recommendations
+          {t('description')}
         </p>
       </div>
 
       <div className="space-y-2">
         <div className="flex justify-between text-sm text-muted-foreground">
           <span>
-            Step {currentStep} of {TOTAL_STEPS}
+            {t('stepOf', { current: currentStep, total: TOTAL_STEPS })}
           </span>
-          <span>{Math.round((currentStep / TOTAL_STEPS) * 100)}% Complete</span>
+          <span>{t('percentComplete', { percent: Math.round((currentStep / TOTAL_STEPS) * 100) })}</span>
         </div>
         <Progress value={(currentStep / TOTAL_STEPS) * 100} />
       </div>
@@ -157,7 +159,7 @@ export default function StrategyPage() {
           variant="outline"
         >
           <ArrowLeft className="h-4 w-4 mr-2" />
-          Back
+          {t('back')}
         </Button>
 
         <Button
@@ -166,13 +168,13 @@ export default function StrategyPage() {
         >
           {currentStep === TOTAL_STEPS ? (
             generateStrategy.isPending ? (
-              "Generating..."
+              t('generating')
             ) : (
-              "Generate Strategy"
+              t('generateStrategy')
             )
           ) : (
             <>
-              Next
+              {t('next')}
               <ArrowRight className="h-4 w-4 ml-2" />
             </>
           )}
