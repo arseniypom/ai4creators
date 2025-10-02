@@ -1,5 +1,7 @@
 "use client";
 
+import { useState } from "react";
+import {useTranslations} from 'next-intl';
 import {
   Card,
   CardContent,
@@ -11,7 +13,6 @@ import { Badge } from "@/components/ui/badge";
 import { Skeleton } from "@/components/ui/skeleton";
 import { Button } from "@/components/ui/button";
 import { Copy, RefreshCw } from "lucide-react";
-import { useState } from "react";
 
 interface Strategy {
   suggestions: {
@@ -32,6 +33,7 @@ export function StrategyResult({
   isLoading,
   onRegenerate,
 }: StrategyResultProps) {
+  const t = useTranslations('StrategyResult');
   const [copied, setCopied] = useState<string | null>(null);
 
   const copyToClipboard = (text: string, id: string) => {
@@ -72,18 +74,18 @@ export function StrategyResult({
   return (
     <div className="space-y-4">
       <div className="flex justify-between items-center">
-        <h2 className="text-2xl font-bold">Your Content Strategy</h2>
+        <h2 className="text-2xl font-bold">{t('title')}</h2>
         <Button onClick={onRegenerate} variant="outline">
           <RefreshCw className="h-4 w-4 mr-2" />
-          Regenerate
+          {t('regenerate')}
         </Button>
       </div>
 
       <Card>
         <CardHeader>
-          <CardTitle>Example Hooks</CardTitle>
+          <CardTitle>{t('hooks.title')}</CardTitle>
           <CardDescription>
-            Use these hooks to grab attention instantly
+            {t('hooks.description')}
           </CardDescription>
         </CardHeader>
         <CardContent className="space-y-2">
@@ -99,7 +101,7 @@ export function StrategyResult({
                 onClick={() => copyToClipboard(hook, `hook-${index}`)}
               >
                 {copied === `hook-${index}` ? (
-                  "Copied!"
+                  t('copied')
                 ) : (
                   <Copy className="h-4 w-4" />
                 )}
@@ -111,9 +113,9 @@ export function StrategyResult({
 
       <Card>
         <CardHeader>
-          <CardTitle>Content Ideas</CardTitle>
+          <CardTitle>{t('contentIdeas.title')}</CardTitle>
           <CardDescription>
-            Topics aligned with your content pillars
+            {t('contentIdeas.description')}
           </CardDescription>
         </CardHeader>
         <CardContent className="space-y-2">
@@ -130,9 +132,9 @@ export function StrategyResult({
 
       <Card>
         <CardHeader>
-          <CardTitle>Best Practices</CardTitle>
+          <CardTitle>{t('bestPractices.title')}</CardTitle>
           <CardDescription>
-            Tips specific to your niche and audience
+            {t('bestPractices.description')}
           </CardDescription>
         </CardHeader>
         <CardContent>

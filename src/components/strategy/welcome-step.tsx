@@ -1,5 +1,6 @@
 "use client";
 
+import {useTranslations} from 'next-intl';
 import {
   Card,
   CardContent,
@@ -16,23 +17,23 @@ interface WelcomeStepProps {
 }
 
 export function WelcomeStep({ onBegin }: WelcomeStepProps) {
+  const t = useTranslations('WelcomeStep');
+
   return (
     <div className="space-y-6">
       <Card>
         <CardHeader className="text-center">
           <CardTitle className="text-2xl">
-            Create Your Viral Content Strategy
+            {t('title')}
           </CardTitle>
           <CardDescription className="text-base">
-            Answer 2 simple questions and get a personalized content strategy in
-            seconds
+            {t('description')}
           </CardDescription>
         </CardHeader>
         <CardContent className="space-y-6">
           <div className="text-center">
             <p className="text-muted-foreground">
-              Our AI will analyze your profile and generate a complete strategy
-              tailored to your niche and audience.
+              {t('intro')}
             </p>
           </div>
 
@@ -40,16 +41,16 @@ export function WelcomeStep({ onBegin }: WelcomeStepProps) {
             <div className="space-y-4">
               <h3 className="font-semibold text-lg flex items-center gap-2">
                 <Sparkles className="h-5 w-5 text-primary" />
-                What You&apos;ll Get
+                {t('whatYouGet')}
               </h3>
 
               <div className="space-y-3">
                 <div className="flex items-start gap-3">
                   <Target className="h-5 w-5 text-primary mt-0.5" />
                   <div>
-                    <p className="font-medium">5 Viral Hook Templates</p>
+                    <p className="font-medium">{t('hooks.title')}</p>
                     <p className="text-sm text-muted-foreground">
-                      Attention-grabbing openings proven to stop the scroll
+                      {t('hooks.description')}
                     </p>
                   </div>
                 </div>
@@ -57,9 +58,9 @@ export function WelcomeStep({ onBegin }: WelcomeStepProps) {
                 <div className="flex items-start gap-3">
                   <Lightbulb className="h-5 w-5 text-primary mt-0.5" />
                   <div>
-                    <p className="font-medium">5 Content Ideas</p>
+                    <p className="font-medium">{t('contentIdeas.title')}</p>
                     <p className="text-sm text-muted-foreground">
-                      Topics perfectly aligned with your content pillars
+                      {t('contentIdeas.description')}
                     </p>
                   </div>
                 </div>
@@ -67,9 +68,9 @@ export function WelcomeStep({ onBegin }: WelcomeStepProps) {
                 <div className="flex items-start gap-3">
                   <Rocket className="h-5 w-5 text-primary mt-0.5" />
                   <div>
-                    <p className="font-medium">3 Best Practices</p>
+                    <p className="font-medium">{t('bestPractices.title')}</p>
                     <p className="text-sm text-muted-foreground">
-                      Personalized tips specific to your niche and audience
+                      {t('bestPractices.description')}
                     </p>
                   </div>
                 </div>
@@ -78,13 +79,13 @@ export function WelcomeStep({ onBegin }: WelcomeStepProps) {
           </div>
 
           <div className="flex items-center justify-center gap-2 pt-4">
-            <Badge variant="secondary">2 Quick Steps</Badge>
-            <Badge variant="secondary">Takes 30 seconds</Badge>
-            <Badge variant="secondary">100% Free</Badge>
+            <Badge variant="secondary">{t('badges.quickSteps')}</Badge>
+            <Badge variant="secondary">{t('badges.time')}</Badge>
+            <Badge variant="secondary">{t('badges.free')}</Badge>
           </div>
 
           <Button onClick={onBegin} size="lg" className="w-full">
-            Begin Strategy Creation
+            {t('begin')}
             <ArrowRight className="ml-2 h-4 w-4" />
           </Button>
         </CardContent>

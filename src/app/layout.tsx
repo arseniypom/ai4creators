@@ -9,6 +9,7 @@ import {
 import { AppSidebar } from "@/components/app-sidebar";
 import { Separator } from "@/components/ui/separator";
 import { Providers } from "./providers";
+import { getLocale, getMessages, getTimeZone } from "next-intl/server";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -26,17 +27,21 @@ export const metadata: Metadata = {
     "Generate compelling hooks and scripts for Instagram Reels and short-form content",
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const locale = await getLocale();
+  const messages = await getMessages();
+  const timeZone = await getTimeZone();
+
   return (
-    <html lang="en">
+    <html lang={locale}>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <Providers>
+        <Providers locale={locale} messages={messages} timeZone={timeZone}>
           <SidebarProvider>
             <AppSidebar />
             <SidebarInset>

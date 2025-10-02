@@ -3,6 +3,7 @@
 import { Target, Sparkles } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import {useTranslations} from 'next-intl';
 
 import {
   Sidebar,
@@ -13,30 +14,33 @@ import {
   SidebarMenu,
   SidebarMenuButton,
   SidebarMenuItem,
+  SidebarFooter,
 } from "@/components/ui/sidebar";
-
-const menuItems = [
-  {
-    title: "Generate",
-    icon: Sparkles,
-    href: "/",
-  },
-  {
-    title: "Strategy",
-    icon: Target,
-    href: "/strategy",
-  },
-];
+import { LanguageSwitcher } from "@/components/language-switcher";
 
 export function AppSidebar() {
   const pathname = usePathname();
+  const t = useTranslations('Sidebar');
+
+  const menuItems = [
+    {
+      title: t('generate'),
+      icon: Sparkles,
+      href: "/",
+    },
+    {
+      title: t('strategy'),
+      icon: Target,
+      href: "/strategy",
+    },
+  ];
 
   return (
     <Sidebar>
       <SidebarContent>
         <SidebarGroup>
           <SidebarGroupLabel className="text-lg font-semibold">
-            VIRALLY
+            {t('appName')}
           </SidebarGroupLabel>
           <SidebarGroupContent>
             <SidebarMenu>
@@ -54,6 +58,9 @@ export function AppSidebar() {
           </SidebarGroupContent>
         </SidebarGroup>
       </SidebarContent>
+      <SidebarFooter>
+        <LanguageSwitcher />
+      </SidebarFooter>
     </Sidebar>
   );
 }

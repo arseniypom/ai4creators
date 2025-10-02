@@ -1,5 +1,7 @@
 "use client";
 
+import { useState } from "react";
+import {useTranslations} from 'next-intl';
 import {
   Card,
   CardContent,
@@ -13,7 +15,6 @@ import { Input } from "@/components/ui/input";
 import { Badge } from "@/components/ui/badge";
 import { X } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { useState } from "react";
 
 interface StyleStepProps {
   data: {
@@ -25,6 +26,7 @@ interface StyleStepProps {
 }
 
 export function StyleStep({ data, onChange }: StyleStepProps) {
+  const t = useTranslations('StyleStep');
   const [pillarInput, setPillarInput] = useState("");
 
   const addPillar = () => {
@@ -44,14 +46,14 @@ export function StyleStep({ data, onChange }: StyleStepProps) {
   return (
     <Card>
       <CardHeader>
-        <CardTitle>Style Preferences</CardTitle>
+        <CardTitle>{t('title')}</CardTitle>
         <CardDescription>
-          Define your content style and approach
+          {t('description')}
         </CardDescription>
       </CardHeader>
       <CardContent className="space-y-6">
         <div className="space-y-3">
-          <Label>What tone do you prefer?</Label>
+          <Label>{t('toneLabel')}</Label>
           <RadioGroup
             value={data.tone}
             onValueChange={(value) => onChange("tone", value)}
@@ -59,28 +61,28 @@ export function StyleStep({ data, onChange }: StyleStepProps) {
             <div className="flex items-center space-x-2">
               <RadioGroupItem value="casual" id="casual" />
               <Label htmlFor="casual">
-                Casual - Friendly and conversational
+                {t('tones.casual')}
               </Label>
             </div>
             <div className="flex items-center space-x-2">
               <RadioGroupItem value="professional" id="professional" />
               <Label htmlFor="professional">
-                Professional - Authoritative and polished
+                {t('tones.professional')}
               </Label>
             </div>
             <div className="flex items-center space-x-2">
               <RadioGroupItem value="humorous" id="humorous" />
-              <Label htmlFor="humorous">Humorous - Light-hearted and fun</Label>
+              <Label htmlFor="humorous">{t('tones.humorous')}</Label>
             </div>
             <div className="flex items-center space-x-2">
               <RadioGroupItem value="serious" id="serious" />
-              <Label htmlFor="serious">Serious - Direct and informative</Label>
+              <Label htmlFor="serious">{t('tones.serious')}</Label>
             </div>
           </RadioGroup>
         </div>
 
         <div className="space-y-3">
-          <Label>What hook style works best for you?</Label>
+          <Label>{t('hookStyleLabel')}</Label>
           <RadioGroup
             value={data.hookStyle}
             onValueChange={(value) => onChange("hookStyle", value)}
@@ -88,35 +90,35 @@ export function StyleStep({ data, onChange }: StyleStepProps) {
             <div className="flex items-center space-x-2">
               <RadioGroupItem value="question" id="question" />
               <Label htmlFor="question">
-                Question - &ldquo;Did you know...?&rdquo;
+                {t('hookStyles.question')}
               </Label>
             </div>
             <div className="flex items-center space-x-2">
               <RadioGroupItem value="statement" id="statement" />
               <Label htmlFor="statement">
-                Statement - &ldquo;Here&apos;s why...&rdquo;
+                {t('hookStyles.statement')}
               </Label>
             </div>
             <div className="flex items-center space-x-2">
               <RadioGroupItem value="story" id="story" />
               <Label htmlFor="story">
-                Story - &ldquo;Last week I...&rdquo;
+                {t('hookStyles.story')}
               </Label>
             </div>
             <div className="flex items-center space-x-2">
               <RadioGroupItem value="statistic" id="statistic" />
               <Label htmlFor="statistic">
-                Statistic - &ldquo;90% of people...&rdquo;
+                {t('hookStyles.statistic')}
               </Label>
             </div>
           </RadioGroup>
         </div>
 
         <div className="space-y-3">
-          <Label>Content Pillars (up to 3)</Label>
+          <Label>{t('contentPillarsLabel')}</Label>
           <div className="flex gap-2">
             <Input
-              placeholder="e.g., Tips & Tricks, Behind the scenes..."
+              placeholder={t('contentPillarsPlaceholder')}
               value={pillarInput}
               onChange={(e) => setPillarInput(e.target.value)}
               onKeyPress={(e) =>
@@ -129,7 +131,7 @@ export function StyleStep({ data, onChange }: StyleStepProps) {
               disabled={data.contentPillars.length >= 3}
               type="button"
             >
-              Add
+              {t('add')}
             </Button>
           </div>
           <div className="flex flex-wrap gap-2">
@@ -147,7 +149,7 @@ export function StyleStep({ data, onChange }: StyleStepProps) {
           </div>
           {data.contentPillars.length === 0 && (
             <p className="text-sm text-muted-foreground">
-              No content pillars added yet
+              {t('noPillars')}
             </p>
           )}
         </div>
